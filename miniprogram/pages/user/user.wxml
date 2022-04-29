@@ -1,0 +1,77 @@
+<view class="title">
+  <view class="login">
+    <!-- <image src="{{userinfo.avatarUrl}}"></image> -->
+    <view wx:if="{{headImg!=''}}">
+      <view class="filter"></view>
+      <!--模糊背景-->
+      <view class="img">
+        <view class="image">
+          <image src="{{headImg}}"></image>
+        </view>
+        <view class="font">{{userName}}</view>
+      </view>
+    </view>
+    <view wx:else class="loginButton">
+      <button class="admin" style="display:{{adminDisplay}}" type="primary" bindtap="getUserProfile">登录</button>
+      <!--获取用户信息-->
+    </view>
+  </view>
+</view>
+
+
+<!-- 我发布过的任务 -->
+<view wx:if="{{headImg!=''}}">
+  <view class="task">
+    <navigator url="../thingList/thingList">
+      <view class="title">
+        <view class="font">我发布的物品</view>
+        <view class="next">
+          <image src="../../images/common/next.png"></image>
+        </view>
+      </view>
+    </navigator>
+
+    <!-- 最多显示3个发布 -->
+    <view wx:if="{{imageBase64.length>0}}">
+      <view wx:for="{{imageBase64}}" data-index="{{index}}">
+        <view class="thing">
+          <view class="img">
+            <image src="{{item.image[0]}}"
+              wx:if="{{imageBase64[index].image[0].imageUrl!=''}}"></image>
+          </view>
+          <view>
+            <view class="title">标题：{{imageBase64[index].title}}</view>
+            <view class="button">
+              <view class="upshot">{{imageBase64[index].upshot}}</view>
+              <!-- <view class="On" wx:if="{{imageBase64[index].offOn==0}}">开启验证</view>
+              <view class="off" wx:if="{{imageBase64[index].offOn==1}}">无需验证</view> -->
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 显示3个结束 -->
+  </view>
+
+  <view class="task" style="margin-bottom: 120rpx;" bindtap="tomessage">
+      <view class="title">
+        <view class="font">我收藏的评论</view>
+        <view class="next">
+          <image src="../../images/common/next.png"></image>
+        </view>
+      </view>
+    <view wx:if="{{savecommunity.length>0}}">
+      <view wx:for="{{savecommunity}}" data-index="{{index}}">
+        <view class="thing">
+          <view class="img">
+            <image src="{{savecommunity[index].content.img[0]}}"
+              wx:if="{{savecommunity[index].content.img[0]!=''}}"></image>
+          </view>
+          <view>
+            <view class="title">标题：{{savecommunity[index].content.text}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

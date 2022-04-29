@@ -1,0 +1,22 @@
+
+
+.function{
+  margin-top: 80rpx;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.function .release{
+  width: 260rpx;
+  height: 260rpx;
+  background-color: #fff;
+  border-radius: 30rpx;
+}
+.function .img image{
+  width: 80rpx;
+  height: 80rpx;
+  margin: 30rpx;
+}
+.button{
+  text-align: center;
+}

@@ -1,0 +1,50 @@
+page{
+  height: 100%
+}
+.van-grid-item__content {
+  padding: 0rpx 0rpx !important;
+}
+
+.text-content {
+  /* margin-left: 90rpx; */
+}
+
+.cu-avatar {
+  top: 26rpx
+}
+
+.imageborder_6 {
+  /* padding-left: 104rpx; */
+  /* padding-right: 12rpx; */
+}
+
+.imageborder_1 {
+  display: flex;
+  justify-content: center;
+  padding-left: 120rpx;
+  padding-right: 32rpx;
+}
+
+.imageborder_4 {
+  padding-left: 110rpx;
+  padding-right: 20rpx;
+}
+
+.content {
+  margin-left: -24rpx;
+}
+.all{
+  display: flex;
+  flex-direction: column;
+} 
+.add-icon{
+  position: fixed;
+  width: 70rpx;
+  height: 70rpx;
+  bottom: 120rpx;
+  right: 20rpx;
+  opacity: 0.6
+}
+.add-hover{
+  background-color: #ece1e2
+}

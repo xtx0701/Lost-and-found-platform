@@ -1,0 +1,135 @@
+Page{
+  background-color: #fff;
+}
+
+.title{
+  font-size: 40rpx;
+  margin: 40rpx;
+}
+.title .line{
+  background-color: #ffd23c;
+  width: 100rpx;
+  height: 12rpx;
+  border-radius: 30rpx;
+}
+
+/* 链接平台的入口 */
+.urlBg{
+  background-color: #ffd23c;
+  width: 95%;
+  margin: 30rpx auto;
+  border-radius: 20rpx;
+  height: 150rpx;
+  display: flex;
+}
+.urlBg .image{
+  margin: 30rpx;
+}
+.urlBg .image image{
+  width: 80rpx;
+  height: 80rpx;
+}
+.urlBg .font{
+  font-size: 38rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 45rpx;
+  margin-left: 20rpx;
+}
+
+.thing{
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  display: flex;
+  box-shadow: 0rpx 0rpx 10rpx rgba(0, 0, 0, 0.25);
+  padding: 20rpx;
+  border-radius: 30rpx;
+}
+.thing .img image{
+  border-radius: 30rpx;
+  height: 180rpx;
+  width: 180rpx;
+}
+.thing .thingTitle{
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-left: 40rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  width: 400rpx;
+}
+.thing .item .upshot{
+  margin-left: 40rpx;
+  margin-top: 30rpx;
+  font-size: 24rpx;
+  color: gray;
+  margin-right: 100rpx;
+}
+.thing .item .button{
+  display: flex;
+}
+
+.thing .item .button .image image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 15rpx;
+  margin-left: 40rpx;
+}
+.item1{
+  display: flex;
+}
+.item1 .font{
+  font-size: 24rpx;
+  margin-top: 40rpx;
+}
+.On{
+  background-color: #ffd23c;
+  height: 55rpx;
+  text-align: center;
+  line-height: 55rpx;
+  border-radius: 30rpx;
+  width: 140rpx;
+  font-size: 24rpx;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+}
+.off{
+  background-color: #e1e1e1;
+  height: 55rpx;
+  text-align: center;
+  line-height: 55rpx;
+  border-radius: 30rpx;
+  width: 140rpx;
+  font-size: 24rpx;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+}
+.icon image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+}
+
+.button1{
+  background-color: #ffd23c;
+  border-radius: 14rpx;
+  padding: 10rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  height: 40rpx;
+  margin-top: 10rpx;
+}
+.button2{
+  background-color: #ce0700;
+  color: #fff;
+  border-radius: 14rpx;
+  padding: 10rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  height: 40rpx;
+  margin-top: 10rpx;
+}

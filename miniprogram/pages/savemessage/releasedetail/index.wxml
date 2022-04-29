@@ -1,0 +1,147 @@
+<view class="bg-white">
+
+<!-- 顶部头像 -->
+<view class="flex padding">
+  <view class="cu-avatar padding lg" style="background-image:url({{userinfo.userinfo.avatarUrl}});"></view>
+  <view class="content flex-sub" style="line-height:44rpx;margin-left:20rpx;">
+    <view class="text-df">{{userinfo.userinfo.nickName}}</view>
+    <view class="text-gray text-df flex justify-between" style="margin-top:16rpx;">
+      编辑于 {{communication.time}}
+    </view>
+  </view>
+</view>
+
+<!-- 文字 -->
+<view class="text-lg padding-left padding-right padding-bottom text-content">
+  {{communication.content.text}}
+</view>
+
+<!-- 轮播图 -->
+<swiper class="screen-swiper round-dot padding-left padding-right padding-bottom" indicator-dots="true"
+  circular="true" autoplay="true" interval="5000" duration="500" indicator-color="#8799a3"
+  indicator-active-color="#0081ff">
+  <swiper-item wx:for="{{communication.content.img}}" data-img="{{item}}" data-idx="{{index}}" wx:key="index"
+    bindtap="swipclick">
+    <image src="{{item}}" mode="aspectFill"></image>
+  </swiper-item>
+</swiper>
+
+<view class="solid-bottom text-lg padding-left padding-right padding-bottom text-content flex justify-between">
+  <view>阅读  {{communication.alreadyread.length}}</view>
+  <view style="display:flex" bindtap="collect" data-id="{{communication._id}}">
+    <image style="height:44rpx;width:44rpx"
+      src="{{Collect?'../../../images/collect.png':'../../../images/discollect.png'}}"></image>
+    <text style="padding-left:10rpx">收藏</text>
+  </view>
+</view>
+</view>
+
+<!-- 阅读评论 -->
+<view class="bg-white margin-top">
+<view class="solid-bottom text-lg padding text-black text-bold">
+  共{{comments.length}}条评论
+</view>
+
+<view class="solid-bottom text-lg padding-left padding-right padding-bottom text-content" wx:for="{{comments}}" wx:key="index" bindlongpress="longdelet" data-openid="{{item.openid}}" data-id="{{item._id}}" data-discussid="{{item.discussid}}">
+  <view class="flex padding-top padding-left padding-right">
+    <view class="cu-avatar padding sm" style="background-image:url({{item.disscussimg}});"></view>
+    <view class="content flex-sub" style="margin-left:20rpx;">
+      <view class="text-sm">{{item.discussname}}</view>
+      <view class="text-gray text-xs flex justify-between">
+        {{item.time}}
+      </view>
+    </view>
+    <view class="text-gray text-sm text-right padding-top-xs">
+      <view style="display:flex;margin-left: 100rpx;align-items: center;" bindtap="collectImage"
+        data-id="{{item._id}}" data-index="{{index}}">
+        <image style="height:32rpx;width:38rpx"
+          src="{{item.isCollect?'../../../images/like.png':'../../../images/dislike.png'}}"></image>
+        <text style="font-size:14px;margin-left: 14rpx;">{{item.likePeople.length}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 文字 -->
+  <view class="padding-left padding-right padding-bottom text-content padding-top-xs text-df" style="flex-direction:column">
+    <view style="text-overflow:ellipsis;word-wrap:break-word;">{{item.discusstext}}</view>
+  </view>
+
+  <!-- 回复内容 -->
+  <view class="bg-gray margin-bottom-sm margin-left margin-right" style="border-radius:10rpx">
+  <view class="padding-left-sm padding-right-sm" wx:for="{{item.discussreply}}" wx:for-item="reply_item" wx:key="index">
+    <text class="text-sm text-cyan" style="white-space:nowrap;">{{reply_item.nickName}}：</text>
+    <text class="text-sm text-grey" style="text-overflow:ellipsis;word-wrap:break-word;">{{reply_item.text}}</text>
+  </view>
+</view>
+
+  <view class="cf">
+    <!-- <view class="fl text-xs padding-left text-grey">展开更多回复<text class="cuIcon-triangledownfill"></text></view> -->
+      <view class="flex align-center padding-right fr" bindtap="reply_showModal" data-id="{{item._id}}" data-target="bottomModal">   
+        <image style="height:40rpx;width:48rpx" src="../../../images/replay.png"></image>
+        <view class="text-df margin-left-xs">回复</view>
+      </view>
+  </view>
+
+<!-- 
+  <view class="flex;justify-end;align-center;padding-right" bindtap="showInput">
+    <image style="height:40rpx;width:48rpx" src="../../../images/replay.png"></image>
+    <view class="text-df margin-left-xs">回复</view>
+-->
+ 
+</view>
+    <!-- 输入框及发送按钮 -->
+    <view class="cu-bar input" wx:if="{{showInput}}" style="z-index:9999">
+  <textarea class="solid-bottom" maxlength="300" cursor-spacing="10" focus="auto" placeholder="请输入内容" bindinput='bindInputMsg' bindblur="onHideInput" confirm-type="send" bindconfirm="sendTextMsg"></textarea>
+  <view class="action">
+    <text class="cuIcon-emojifill text-grey"></text>
+  </view>
+  <button class="cu-btn bg-green shadow-blur">发送</button>
+</view>
+</view>
+
+<view style="height:100rpx;"></view>
+<!-- 底部 -->
+<view class="justify-around cu-bar foot bg-white">
+
+  <view class="padding-sm margin-xs flex" bindtap="showModal" data-target="bottomModal">
+    <image style="height:42rpx;width:50rpx" src="../../../images/replay.png"></image>
+    <view class="text-lg margin-left-xs">评论</view>
+  </view>
+
+  <button class="padding-sm margin-xs flex align-center btn" open-type="share" style="background-color: white;">
+    <image style="height:42rpx;width:44rpx" src="../../../images/share.png"></image>
+    <view class="text-lg margin-left-xs">分享</view>
+  </button>
+</view>
+
+<!-- 评论 -->
+<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+<view wx:if="shows" class="cu-dialog" style="height:400rpx">
+  <view class="cu-bar bg-white">
+    <view class="action text-blue" bindtap="hideModal">取消</view>
+    <view class="action text-green" bindtap="send" style="margin-right:30rpx">发布</view>
+  </view>
+  <view class="padding-sm">
+    <view class="cu-form-group">
+      <textarea  bindinput="input" style="text-align: left;" maxlength="-1" placeholder="请评论......"  show-confirm-bar="{{false}}"></textarea>
+    </view>
+  </view>
+</view>
+<view bindtap="closebottom"></view>
+</view>
+
+
+<!-- 回复 -->
+<view class="cu-modal bottom-modal {{reply_modalName=='bottomModal'?'show':''}}">
+<view wx:if="shows" class="cu-dialog" style="height:400rpx">
+  <view class="cu-bar bg-white">
+    <view class="action text-blue" bindtap="reply_hideModal">取消</view>
+    <view class="action text-green" bindtap="reply_send" style="margin-right:30rpx">发送</view>
+  </view>
+  <view class="padding-sm">
+    <view class="cu-form-group">
+      <textarea bindinput="input" style="text-align: left;" maxlength="100" placeholder="请输入......"  show-confirm-bar="{{false}}"></textarea>
+    </view>
+  </view>
+</view>
+</view>
+

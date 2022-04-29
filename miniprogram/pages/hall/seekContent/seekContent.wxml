@@ -1,0 +1,49 @@
+
+<view class="about" bindtap="showPop" style="display:{{about}};">
+  <view class="content">
+    <view class="headImg"><image src="{{seek.headImg}}"></image></view>
+    <view class="font1">{{seek.userName}}</view>
+    <view class="font1">微信/手机号：{{seek.seekuserWx}}</view>
+  </view>
+</view>
+
+<view class="content">
+  <view class="topuser">
+    <view class="headImg">
+      <image src="{{seek.headImg}}"></image>
+    </view>
+    <view class="userName">{{seek.userName}}</view>
+    <view class="cu-tag bg-blue font1">{{seek.upshot}}</view>
+  </view>
+
+  <view class="title">
+    <view class="font">
+      标题丨{{seek.seekTitle}}
+    </view>
+  </view>
+  <swiper class="screen-swiper round-dot padding-left padding-right padding-bottom" indicator-dots="true"
+  circular="true" autoplay="true" interval="5000" duration="500" indicator-color="#8799a3"
+  indicator-active-color="#0081ff">
+  <swiper-item wx:for="{{seek.image}}" data-img="{{item}}" data-idx="{{index}}" wx:key="index"
+    bindtap="swipclick">
+    <image src="{{item}}"></image>
+  </swiper-item>
+</swiper>
+  <view class="text margin-top-sm">物品类型：{{seek.seekNowThing}}</view>
+  <view class="text margin-top-sm">
+    丢失位置：{{seek.seekRess}}
+  </view>
+  <view class="text margin-top-sm">
+    备注：{{seek.seekremark}}
+  </view>
+</view>
+
+<view class="user">
+  <view class="headImg">
+    <image src="{{seek.headImg}}"></image>
+  </view>
+  <view class="userName">{{seek.userName}}</view>
+  <view class="button" wx:if="{{seek.upshot=='丢失'}}" bindtap="showPop">联系方式</view>
+  <view wx:if="{{seek.upshot=='寻回'}}" class="ok"><image src="../../../images/index-icon/ok.png"></image></view>
+</view>
+

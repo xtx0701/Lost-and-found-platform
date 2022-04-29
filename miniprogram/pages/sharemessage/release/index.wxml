@@ -1,0 +1,64 @@
+<!-- <scroll-view style="height:{{windowHeight-60}}px" scroll-y="true"> -->
+<view style="margin-bottom:60px">
+	<view class="cu-card dynamic" wx:for="{{chat}}" wx:key="index">
+		<view class="cu-item shadow" style="margin: 10rpx;">
+			<view bindtap="todetail" data-id="{{item._id}}" data-index="{{index}}">
+				<view class="cu-list menu-avatar">
+					<view class="cu-item">
+						<view class="cu-avatar round" style="background-image:url({{item.userinfo.avatarUrl}});"></view>
+						<view class="content flex-sub">
+							<view>{{item.userinfo.nickName}}</view>
+							<view class="text-gray text-sm flex justify-between">
+								{{item.time}}
+							</view>
+						</view>
+						<view wx:if="{{item.openid == openid}}">
+							<image class="margin-right-sm margin-bottom" catchtap="delet" style="height:50rpx;width:50rpx" src="../../../images/more.png" data-id="{{item._id}}" data-index="{{index}}"></image>
+						</view>
+					</view>
+				</view>
+				<view class="text-content" style="margin-left:20rpx;margin-right: 25rpx;font-size: 20px;">
+					{{item.content.text}}
+				</view>
+				<!-- 四张图片显示 -->
+				<!-- <view wx:if="{{item.content.img.length == 4}}">
+					<view class="imageborder_4">
+						<van-grid column-num="2" border="{{ false }}" gutter="{{6}}">
+							<van-grid-item use-slot wx:for="{{item.content.img}}" wx:key="index" wx:for-item="img_item"
+								wx:for-index="idx">
+								<image style="width: 100%; height: 90px;" src="{{img_item}}" data-idx="{{idx}}" data-id="{{item._id}}"
+									data-index="{{index}}" catchtap="imagePreview" mode="aspectFill" />
+							</van-grid-item>
+						</van-grid>
+					</view>
+				</view> -->
+				<!-- 一张图片显示 -->
+				<!-- <view wx:elif="{{item.content.img.length == 1}}">
+					<view wx:for="{{item.content.img}}" wx:key="index" wx:for-item="img_item" wx:for-index="idx"
+						class="imageborder_1">
+						<image src="{{img_item}}" catchtap="imagePreview" data-idx="{{idx}}" data-id="{{item._id}}"
+							data-index="{{index}}" mode="scaleToFill" />
+					</view>
+				</view> -->
+				<!-- 其他数量图片 -->
+				<!-- <view wx:else="{{item.content.img.length == 6}}"> -->
+				<view class="imageborder_6">
+					<van-grid column-num="3" border="{{ false }}" gutter="{{6}}">
+						<van-grid-item use-slot wx:for="{{item.content.img}}" wx:key="index" wx:for-item="img_item" wx:for-index="idx">
+							<image style="width: 100%; height: 90px;" catchtap="imagePreview" src="{{img_item}}" data-idx="{{idx}}" data-id="{{item._id}}" data-index="{{index}}" mode="aspectFill" />
+						</van-grid-item>
+					</van-grid>
+				</view>
+				<!-- </view> -->
+			</view>
+
+			<view class="text-gray text-sm text-left padding">
+				<view style="display:flex" bindtap="collectImage" data-id="{{item._id}}" data-index="{{index}}">
+					<image style="height:38rpx;width:44rpx" src="{{item.isCollect?'../../../images/like.png':'../../../images/dislike.png'}}"></image>
+					<text style="font-size:18px;margin-left: 14rpx;">{{item.likePeople.length}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+<!-- </scroll-view> -->

@@ -1,0 +1,74 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/hall/hall",
+    "pages/user/user",
+    "pages/release/release",
+    "pages/thingList/thingList",  
+    "pages/hall/loseContent/loseContent",
+    "pages/hall/seekContent/seekContent",
+    "pages/newrelease/index",
+    "pages/community/shareshop/index",
+    "pages/sharemessage/release/index",
+    "pages/sharemessage/releasedetail/index",
+    "pages/savemessage/release/index",
+    "pages/savemessage/releasedetail/index"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "custom": true,
+    "backgroundColor": "#ffffff",
+    "color": "#999999",
+    "selectedColor": "#545454",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/index-icon/index.png",
+        "selectedIconPath": "images/index-icon/index.png"
+      },
+      {
+        "pagePath": "pages/sharemessage/release/index",
+        "text": "社区",
+        "iconPath": "images/index-icon/message.png",
+        "selectedIconPath": "images/index-icon/message.png"
+      },
+      {
+        "pagePath": "pages/newrelease/index",
+        "text": "发布",
+        "iconPath": "images/index-icon/message.png",
+        "selectedIconPath": "images/index-icon/message.png"
+      },
+      {
+        "pagePath": "pages/hall/hall",
+        "text": "大厅",
+        "iconPath": "images/index-icon/dating.png",
+        "selectedIconPath": "images/index-icon/dating.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "用户",
+        "iconPath": "images/index-icon/user.png",
+        "selectedIconPath": "images/index-icon/user.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-sticky": "./components/vant/sticky/index",
+    "van-cell": "./components/vant/cell/index",
+    "van-button": "./components/vant/button/index",
+    "van-cell-group": "./components/vant/cell-group/index",
+    "van-empty": "./components/vant/empty/index",
+    "van-grid": "./components/vant/grid/index",
+    "van-grid-item": "./components/vant/grid-item/index",
+    "van-action-sheet": "./components/vant/action-sheet/index"
+  },
+  "sitemapLocation": "sitemap.json"
+}

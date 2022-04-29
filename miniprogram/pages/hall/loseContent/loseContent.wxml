@@ -1,0 +1,61 @@
+<view class="about" bindtap="showPop" style="display:{{about}};">
+  <view class="content">
+    <view class="headImg">
+      <image src="{{lose.headImg}}"></image>
+    </view>
+    <view class="font1">{{lose.userName}}</view>
+    <view class="font1">微信/手机号：{{lose.userWx}}</view>
+  </view>
+</view>
+
+<view class="content">
+  <view class="topuser">
+    <view class="headImg">
+      <image src="{{lose.headImg}}"></image>
+    </view>
+    <view class="userName">{{lose.userName}}</view>
+    <view class="cu-tag bg-blue font1">{{lose.upshot}}</view>
+  </view>
+  <view class="title">
+    <view class="font">
+      标题丨{{lose.title}}
+    </view>
+  </view>
+
+  <swiper class="screen-swiper round-dot padding-left padding-right padding-bottom" indicator-dots="true"
+  circular="true" autoplay="true" interval="5000" duration="500" indicator-color="#8799a3"
+  indicator-active-color="#0081ff">
+  <swiper-item wx:for="{{lose.image}}" data-img="{{item}}" data-idx="{{index}}" wx:key="index"
+    bindtap="swipclick">
+    <image src="{{item}}"></image>
+  </swiper-item>
+</swiper>
+  <view class="text margin-top-sm">
+    物品类型：{{lose.nowThing}}
+  </view>
+
+  <view class="text margin-top-sm">
+    拾取位置：{{lose.addRess}}
+  </view>
+
+  <view class="text margin-top-sm">
+    当前位置：{{lose.nowLocation}}
+  </view>
+
+  <view class="text margin-top-sm">
+    备注：{{lose.remark}}
+  </view>
+
+</view>
+
+<view class="user">
+  <view class="headImg">
+    <image src="{{lose.headImg}}"></image>
+  </view>
+  <view class="userName">{{lose.userName}}</view>
+  <view class="button" wx:if="{{lose.offOn==0 && lose.upshot=='认领中'}}" bindtap="showPop">认领</view>
+  <view class="button1" wx:if="{{lose.offOn==1 && lose.upshot=='认领中'}}">拒绝联系</view>
+  <view wx:if="{{lose.upshot=='已认领'}}" class="ok">
+    <image src="../../../images/index-icon/ok.png"></image>
+  </view>
+</view>

@@ -1,0 +1,151 @@
+<view wx:if="{{openid!=''}}">
+  <scroll-view scroll-x class="bg-white nav">
+    <view class="flex text-center">
+      <view class="cu-item flex-sub {{indexTitle==0?'text-blue cur':''}}" wx:key bindtap="indexTitle1" data-id="0">
+        <text class="text-black"></text> 失物招领
+      </view>
+      <view class="cu-item flex-sub {{indexTitle==1?'text-blue cur':''}}" wx:key bindtap="indexTitle2" data-id="1">
+        <text class="text-black"></text> 寻物启事
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 物品的描述和标题+地点 -->
+  <view wx:if="{{indexTitle==0}}">
+
+    <form bindsubmit="submitthing">
+      <view class="cu-form-group">
+        <view class="title">物品名称</view>
+        <input placeholder="请输入物品名称" name="itemTitle"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">分类</view>
+        <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}" name="itemClassification">
+          <view class="picker" style="text-align:left;color:#787878;">
+            {{index1?picker[index1]:'请选择物品分类'}}
+          </view>
+        </picker>
+      </view>
+
+      <view class="cu-form-group">
+        <view class="title">拾取位置</view>
+        <input placeholder="请输入拾取位置" name="addRess"></input>
+      </view>
+
+      <view class="cu-form-group">
+        <view class="title">当前位置</view>
+        <input placeholder="请输入当前位置" name="thingLocation"></input>
+      </view>
+
+      <view class="cu-form-group">
+        <view class="title">验证信息</view>
+        <picker bindchange="checkChange" value="{{index}}" range="{{check}}" name="sellOnline">
+          <view class="picker" style="text-align:left;color:#787878;">
+            {{index2?check[index2]:'请选择是否验证'}}
+          </view>
+        </picker>
+      </view>
+
+      <view class="cu-form-group">
+        <view class="title">备注</view>
+        <input placeholder="添加备注" name="remark"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">微信/手机号</view>
+        <input placeholder="请输入微信/手机号" name="userWx"></input>
+      </view>
+
+      <view class="cu-bar bg-white margin-top">
+        <view class="action">
+          图片上传
+        </view>
+        <view class="action">
+          {{imgList1.length}}/3
+        </view>
+      </view>
+      <view class="cu-form-group">
+        <view class="grid col-3 grid-square flex-sub">
+          <view class="bg-img" wx:for="{{imgList1}}" wx:key="index" bindtap="ViewImage1" data-url="{{imgLis1t[index]}}">
+            <image src='{{imgList1[index]}}' mode='aspectFill'></image>
+            <view class="cu-tag bg-red red" catchtap="DelImg1" data-index="{{index}}">
+              <text class="cuIcon-close"></text>
+            </view>
+          </view>
+          <view class="solids" bindtap="ChooseImage1" wx:if="{{imgList1.length<3}}">
+            <text class="cuIcon-cameraadd"></text>
+          </view>
+        </view>
+      </view>
+
+      <view class='box margin-top'>
+        <view class="cu-bar btn-group">
+          <button class='cu-btn bg-green shadow-blur lg' formType="submit">发 布</button>
+        </view>
+      </view>
+    </form>
+  </view>
+
+  <!-- 分界线 -->
+  <view wx:if="{{indexTitle==1}}">
+    <form bindsubmit="submitseek">
+      <view class="cu-form-group">
+        <view class="title">物品名称</view>
+        <input placeholder="请输入物品名称" name="seekTitle"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">分类</view>
+        <picker bindchange="PickerChange2" value="{{index}}" range="{{picker}}" name="seekClassification">
+          <view class="picker" style="text-align:left;color:#787878;">
+            {{index3?picker[index3]:'请选择物品分类'}}
+          </view>
+        </picker>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">丢失位置</view>
+        <input placeholder="请输入丢失位置" name="seekRess"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">备注</view>
+        <input placeholder="添加备注" name="seekremark"></input>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">微信/手机号</view>
+        <input placeholder="请输入微信/手机号" name="seekuserWx"></input>
+      </view>
+
+      <view class="cu-bar bg-white margin-top">
+        <view class="action">
+          图片上传
+        </view>
+        <view class="action">
+          {{imgList2.length}}/3
+        </view>
+      </view>
+      <view class="cu-form-group">
+        <view class="grid col-3 grid-square flex-sub">
+          <view class="bg-img" wx:for="{{imgList2}}" wx:key="index" bindtap="ViewImage2" data-url="{{imgList2[index]}}">
+            <image src='{{imgList2[index]}}' mode='aspectFill'></image>
+            <view class="cu-tag bg-red red" catchtap="DelImg2" data-index="{{index}}">
+              <text class="cuIcon-close"></text>
+            </view>
+          </view>
+          <view class="solids" bindtap="ChooseImage2" wx:if="{{imgList2.length<3}}">
+            <text class="cuIcon-cameraadd"></text>
+          </view>
+        </view>
+      </view>
+
+      <view class='box margin-top'>
+        <view class="cu-bar btn-group">
+          <button class='cu-btn bg-green shadow-blur lg' formType="submit">发 布</button>
+        </view>
+      </view>
+    </form>
+  </view>
+
+</view>
+
+<view wx:if="{{openid==''}}">
+  <image src="../../images/img/noLogin.png" style="margin-top:50rpx;margin-left: 110rpx;"></image>
+  <view style="margin: 0 auto; text-align: center; font-size: 42rpx; color: rgba(0, 0, 0, 0.562);">未登录</view>
+</view>

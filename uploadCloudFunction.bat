@@ -1,0 +1,1 @@
+"D:\WeChat\微信web开发者工具\cli.bat" cloud functions deploy --e cloud1-2gtyvwr00b922c4b --n quickstartFunctions --r --project "C:\Users\sorry i believe\Desktop\代代小程序\失物招领(正式)" --report

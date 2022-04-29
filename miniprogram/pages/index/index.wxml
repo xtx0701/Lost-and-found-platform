@@ -1,0 +1,39 @@
+<!-- 轮播图 -->
+<swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000"
+  duration="500">
+  <swiper-item wx:for="{{indeximg}}" wx:key="index">
+    <image src="{{item.image}}" mode="aspectFill"></image>
+  </swiper-item>
+</swiper>
+
+<!-- 发布和寻找 -->
+<view class="function">
+  <view class="release">
+    <!--发布-->
+    <view class="list">
+      <view class="img button" bindtap="navigator">
+        <image src="../../images/index-icon/release.png"></image>
+      </view>
+    </view>
+    <navigator url="../release/release?indexTitle=0" class="text-center">
+      <button class="cu-btn bg-blue lg">
+        失物招领
+      </button>
+    </navigator>
+  </view>
+
+  <view class="release">
+    <!--寻找-->
+    <view class="list">
+      <view class="img button" bindtap="navigator">
+        <image src="../../images/index-icon/search.png"></image>
+      </view>
+
+    </view>
+    <navigator url="../release/release?indexTitle=1" class="text-center">
+      <button class="cu-btn bg-blue lg">
+        寻物寻事
+      </button>
+    </navigator>
+  </view>
+</view>

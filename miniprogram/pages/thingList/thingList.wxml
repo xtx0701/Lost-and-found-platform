@@ -1,0 +1,65 @@
+<view class="title" style="display: flex;">
+  <view bindtap="index">
+    <view>我的发布</view>
+    <view class="{{index==0 ? 'line':''}}"></view>
+  </view>
+
+  <view style="margin-left: 100rpx;" bindtap="index">
+    <view>我的寻物</view>
+    <view class="{{index==1 ? 'line':''}}"></view>
+  </view>
+</view>
+
+<!-- 所有发布（选择了我的发布后的内容） -->
+<view wx:if="{{index==0}}">
+  <view class="thing" wx:for="{{list}}" data-index="{{index}}">
+    <view class="img">
+      <image src="{{list[index].image[0]}}"></image>
+    </view>
+    <view class="item">
+      <view class="thingTitle">{{list[index].title}}</view>
+      <!-- <view class="item1">
+        <view class="On" wx:if="{{list[index].offOn==0}}">开启验证</view>
+        <view class="off" wx:if="{{list[index].offOn==1}}">无需验证</view>
+      </view> -->
+      <view class="button">
+        <view class="upshot">{{list[index].upshot}}</view>
+        <view class="cu-tag bg-blue" style="margin-top: 24rpx;" bindtap="update" data-index="{{index}}" wx:if="{{list[index].upshot=='已认领'}}">已认领 √</view>
+        <view class="cu-tag bg-red" style="margin-top: 24rpx;" bindtap="update" data-index="{{index}}" wx:if="{{list[index].upshot=='认领中'}}">认领中 ×</view>
+        <!-- <view class="button1" bindtap="update" data-index="{{index}}" wx:if="{{list[index].upshot=='已认领'}}">
+          已认领 √
+        </view> -->
+        <!-- <view class="button2" bindtap="update" data-index="{{index}}" wx:if="{{list[index].upshot=='认领中'}}">
+          认领中 ×
+        </view> -->
+        <view class="image" bindtap="delete" data-index="{{index}}">
+          <image src="../../images/index-icon/delete.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 所有发布（选择了我的寻物后的内容） -->
+<view wx:if="{{index==1}}">
+  <view class="thing" wx:for="{{list1}}" data-index="{{index}}">
+    <view class="img">
+      <image src="{{list1[index].image[0]}}" wx:if="{{list1[index].image[0].imageUrl!=''}}"></image>
+    </view>
+    <view class="item">
+      <view class="thingTitle">{{list1[index].seekTitle}}</view>
+      <view class="item1">
+        <!-- <view class="On" wx:if="{{list1[index].callOrVx.indexOf('微信')!=-1}}">微信</view>
+        <view class="off" wx:if="{{list1[index].callOrVx.indexOf('电话')!=-1}}">电话</view> -->
+      </view>
+      <view class="button">
+        <view class="upshot">{{list1[index].upshot}}</view>
+        <view class="cu-tag bg-blue" style="margin-top: 24rpx;" bindtap="update1" data-index="{{index}}" wx:if="{{list1[index].upshot=='丢失'}}">确认寻回 √</view>
+        <view class="cu-tag " style="margin-top: 24rpx;"  wx:if="{{list1[index].upshot=='寻回'}}">确认寻回 √</view>
+        <view class="image" bindtap="delete1" data-index="{{index}}">
+          <image src="../../images/index-icon/delete.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

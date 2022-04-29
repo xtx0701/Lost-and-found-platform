@@ -1,0 +1,15 @@
+@import "../components/colorui/main.wxss";
+@import "../components/colorui/icon.wxss";
+
+.tabbar{
+  background-color: #ffffff;
+}
+.bg-cyan{
+  background-color: #cce6ff;
+}
+.active{
+  color: #0081ff;
+}
+.default{
+  color:rgb(51, 24, 24);
+}
